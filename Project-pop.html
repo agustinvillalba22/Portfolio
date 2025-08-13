@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="custom.css">
+    <link rel="stylesheet" href="style.css">
+    <title>Projects</title>
+</head>
+
+</style>
+</head>
+<body>
+
+    <h1>Mi página</h1>
+    <p>Texto descriptivo de la página.</p>
+    <button onclick="abrirPopup()">Mostrar Pop-up</button>
+
+    <!-- Overlay y pop-up -->
+    <div class="overlay" id="overlay">
+        <div class="popup">
+            <span class="close-btn" onclick="cerrarPopup()">×</span>
+            <div class="group-btn">
+    <button class="group-btn-item active" onclick="selectGroupBtn(this)">DESCRIPTION</button>
+    <button class="group-btn-item" onclick="selectGroupBtn(this)">DESIGN SYSTEM</button>
+    <button class="group-btn-item" onclick="selectGroupBtn(this)">WIREFRAMES</button>
+            </div>
+            <div class="info-pop">
+                <div><img src="multimedia/hit.png" alt="preview" class="image-description"></div>
+                <div>
+                    <h1>HIT COWORK</h1>
+                    <p>Web platform to manage coworking spaces: book rooms, register clients, handle contracts, add credits, and issue invoices in one streamlined system.</p>
+                    <H3>The challenge</H3>
+                    <P>The platform was cluttered, with too many paths to complete the same task, confusing users and making navigation less intuitive for beginners.</P>
+                    <H3>Solution</H3>
+                    <P>I redesigned the interface to simplify navigation and clearly define flows, reducing cognitive load for users. A consistent visual hierarchy highlights key actions, while contextual tooltips provide quick guidance. An AI-powered assistant supports inexperienced users step-by-step, from booking spaces to managing contracts, adding credits, and issuing invoices.</P>
+                </div>
+            </div>
+            <div class="design-system">
+        <div class="video-container">
+            <video controls>
+                <source src="multimedia/design-system.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </div>
+    </div>
+        </div>
+    </div>
+
+<script>
+    function abrirPopup() {
+        document.getElementById("overlay").style.display = "block";
+    }
+    function cerrarPopup() {
+        document.getElementById("overlay").style.display = "none";
+    }
+
+    function selectGroupBtn(btn) {
+    document.querySelectorAll('.group-btn-item').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+}
+</script>
+
+</body>
+</html>

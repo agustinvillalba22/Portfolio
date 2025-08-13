@@ -1,0 +1,59 @@
+body {
+    background-color: #F9F9F5;
+    color: #181616;
+    margin:  2rem 6.25rem;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+:root {
+    --color-bg: #F9F9F5;
+    --color-text: #181616;
+    --color-accent: #181616;
+    --color-white: #fff;
+    --color-shadow: rgba(0,0,0,0.04);
+    --color-hover: #333;
+
+    --font-chakra: 'Chakra Petch', sans-serif;
+    --font-gilroy: 'Gilroy', Arial, sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Chakra Petch', sans-serif;
+}
+
+h1 {
+    font-size: 8 rem;
+    font-weight: 500;
+}
+
+p {
+    font-family: 'Gilroy', Arial, sans-serif;
+    font-weight: 400;
+    font-size: 1.15rem;
+}
+
+
+button {
+    font-family: 'Gilroy', Arial, sans-serif;
+    font-weight: 500;
+    font-size: 1.50rem;
+    color: var(--color-bg);
+    background: var(--color-text);
+    border: none;
+    cursor: pointer;
+    transition: color 0.2s;
+    padding: 10px 50px;
+    width: 100%;
+}
+
+button:hover {
+    opacity: 0.8;
+}
+
+button:active {
+    background-color: var(--color-bg);
+    color: var(--color-text);
+}
