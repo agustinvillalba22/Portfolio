@@ -36,8 +36,8 @@
             </div>
             <div class="hero-bottom">
                 <p>Take a look at my portfolio</p>
-                <a href="#">
-                    <img src="multimedia/icons/arrow-right.svg" alt="arrow right icon" class="arrow-icon">
+                <a href="#projects" onclick="event.preventDefault(); document.getElementById('projects').scrollIntoView({ behavior: 'smooth', block: 'start' }); openOnly('projects');">
+    <img src="multimedia/icons/arrow-right.svg" alt="arrow right icon" class="arrow-icon">
                 </a>
             </div>
         </div>
@@ -100,14 +100,14 @@
                         <h3>FREELANCER | 2021-Now</h3>
                         <p>UX-UI design</p>
                         <p>Graphic Design</p>
-                        <p>Front-end development</p>
+                        <p alt="HTML CSS JavaScript">Front-end development</p>
                         <p>Illustration- Motion</p>
                     </div>
                     <div class="about-list">
                         <h3>ADBIZE | 2024-2025</h3>
                         <p>UX-UI design</p>
                         <p>Graphic Design</p>
-                        <p>Front-end development</p>
+                        <p alt="HTML CSS JavaScript">Front-end development</p>
                         <p>Illustration- Motion</p>
                     </div>
                     <div class="about-list">
@@ -150,16 +150,15 @@
                 <h2>TECHNICAL SKILLS</h2>
                 <div class="about-scroll">
                     <div class="about-list-skill">
-                        <h4>Figma</h4>
-                        <h4>Adobe Illustrator</h4>
-                        <h4>Adobe Photoshop</h4>
-                        <h4>Adobe After Effects</h4>
-                        <h4>Adobe Premiere Pro</h4>
-                        <h4>Adobe InDesign</h4>
-                        <h4>Painter Studio</h4>
-                        <h4>Visual Studio Code</h4>
-                        <h4>Git</h4>
-                        <h4>Copilot | OpenAI | Adobe Firefly</h4>
+                        <div class="logo-text-container"><img src="multimedia/icons/figma-logo.svg" alt="Figma"><h4>Figma</h4></div>
+                        <div class="logo-text-container"><img src="multimedia/icons/ai-logo.svg" alt="Adobe Illustrator"><h4>Adobe Illustrator</h4></div>
+                        <div class="logo-text-container"><img src="multimedia/icons/ps-logo.svg" alt="Adobe Photoshop"><h4>Adobe Photoshop</h4></div>
+                        <div class="logo-text-container"><img src="multimedia/icons/ae-logo.svg" alt="Adobe After Effects"><h4>Adobe After Effects</h4></div>
+                        <div class="logo-text-container"><img src="multimedia/icons/pr-logo.svg" alt="Adobe Premiere Pro"><h4>Adobe Premiere Pro</h4></div>
+                        <div class="logo-text-container"><img src="multimedia/icons/id-logo.svg" alt="Adobe InDesign"><h4>Adobe InDesign</h4></div>
+                        <div class="logo-text-container"><img src="multimedia/icons/infite painter-logo.svg" alt="Infite Painter"><h4>Infite Painter</h4></div>
+                        <div class="logo-text-container"><img src="multimedia/icons/visual-logo.svg" alt="Visual Studio Code"><h4>Visual Studio Code</h4></div>
+                        <div class="logo-text-container"><img src="multimedia/icons/copilot-logo.svg" alt="Copilot"><img src="multimedia/icons/openai-logo.svg" alt="OpenAI"><img src="multimedia/icons/firefly-logo.svg" alt="Adobe Firefly"><h4>Copilot | OpenAI | Adobe Firefly</h4></div>
                     </div>
                 </div>
                 <div class="separador-secondary"></div>
@@ -193,7 +192,7 @@
                     <div class="contact-info">
                         <p class="contact-title">Let's work together!</p>
                         <p class="contact-text">I'm always open to collaborate on fresh, meaningful ideas. If you have a project in mind or just want to explore possibilities together, let's connect and make it happen.</p>
-                        <form action="#" class="contact-form">
+                        <form class="contact-form" id="contactForm">
                             <label for="name">Name:</label>
                             <input type="text" id="name" name="name" required>
                         
@@ -204,6 +203,7 @@
                             <textarea id="message" name="message" rows="4" required></textarea>
                         
                             <button type="submit">Send</button>
+                            <div id="form-status"></div>
                         </form>
                     </div>
                 </div>
@@ -223,8 +223,8 @@
                 </div>
                 <!-- Popup Sections -->
                 <div class="info-pop">
-                    <div><img src="multimedia/hit.png" alt="preview" class="image-description"></div>
-                    <div>
+                    <div class="image-container"><img src="multimedia/hit.png" alt="preview" class="image-description"></div>
+                    <div class="text-description">
                         <h1>HIT COWORK</h1>
                         <p>Web platform to manage coworking spaces: book rooms, register clients, handle contracts, add credits, and issue invoices in one streamlined system.</p>
                         <h3>The challenge</h3>
@@ -236,19 +236,20 @@
                 <div class="design-system" style="display:none;">
                     <div class="video-container">
                         <video controls>
-                            <source src="multimedia/design-system.mp4" type="video/mp4">
+                            <source src="multimedia/mi-portfolio.mp4" type="video/mp4">
                             Your browser does not support the video tag.
                         </video>
                     </div>
                 </div>
                 <div class="carrusel-wireframes" style="display:none;">
-                    <button class="carrusel-btn prev" onclick="moveCarrusel(-1)">&#8592;</button>
                     <div class="carrusel-track" id="carrusel-track">
-                        <img src="multimedia/hit.png" alt="home">
-                        <img src="multimedia/wireframe2.png" alt="wireframe 2">
-                        <img src="multimedia/wireframe3.png" alt="wireframe 3">
+                        <img src="multimedia/frames/Hitcowork/login.png" alt="home">
+                        <img src="multimedia/frames/Hitcowork/inicio.png" alt="home">
+                        <img src="multimedia/frames/Hitcowork/clientes.png" alt="home">
+                        <img src="multimedia/frames/Hitcowork/reservas.png" alt="home">
+                        <img src="multimedia/frames/Hitcowork/invitar.png" alt="home">
+                        <img src="multimedia/frames/Hitcowork/Chat-ia.png" alt="home">
                     </div>
-                    <button class="carrusel-btn next" onclick="moveCarrusel(1)">&#8594;</button>
                 </div>
             </div>
         </div>
@@ -257,10 +258,19 @@
         <div class="overlay" id="visuals-popup" style="display:none;">
             <div class="popup">
                 <span class="close-btn" onclick="cerrarVisualsPopup()">×</span>
-                <img id="visuals-popup-img" src="" alt="Visual" style="max-width:90vw; max-height:80vh; border-radius:20px;">
+                <img class="visuals-popup-img" id="visuals-popup-img" src="" alt="Visual" style="max-width:90vw; max-height:80vh; border-radius:20px;">
             </div>
         </div>
+
+<!-- Botón hamburguesa -->
+<button class="hamburger" id="hamburger-btn" aria-label="Open menu">
+    <span></span>
+    <span></span>
+    <span></span>
+</button>
+        
     </main>
 <script src="main.js"></script>
+
 </body>
 </html>

@@ -94,3 +94,130 @@ function cerrarVisualsPopup() {
     document.getElementById('visuals-popup').style.display = 'none';
     document.getElementById('visuals-popup-img').src = '';
 }
+
+
+function autoScrollCards(selector, speed = 0.5) {
+    const containers = document.querySelectorAll(selector);
+    containers.forEach(container => {
+        let intervalId = null;
+
+        function startScroll() {
+            if (intervalId) return;
+            intervalId = setInterval(() => {
+                if (container.scrollWidth - container.clientWidth <= 0) return;
+                // Si llegó al final, vuelve al inicio instantáneamente (loop infinito)
+                if (container.scrollLeft + container.clientWidth >= container.scrollWidth - 1) {
+                    container.scrollLeft = 0;
+                } else {
+                    container.scrollLeft += speed;
+                }
+            }, 20);
+        }
+
+        function stopScroll() {
+            clearInterval(intervalId);
+            intervalId = null;
+        }
+
+        // Inicia el autoscroll
+        startScroll();
+
+        // Pausa al hacer hover
+        container.addEventListener('mouseenter', stopScroll);
+        container.addEventListener('mouseleave', startScroll);
+    });
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+    autoScrollCards('.projects-cards', 1);
+});
+
+
+function enableParallaxOnPopupImage() {
+    const popup = document.querySelector('#overlay .popup');
+    if (!popup) return;
+    popup.addEventListener('mousemove', function(e) {
+        const infoPop = popup.querySelector('.info-pop');
+        const img = popup.querySelector('.image-description');
+        if (!img || !infoPop || infoPop.style.display === 'none') return;
+
+        const rect = img.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        const moveX = ((x / rect.width) - 0.5) * 20; // rango -10px a 10px
+        const moveY = ((y / rect.height) - 0.5) * 20;
+
+        img.style.transform = `translate(${moveX}px, ${moveY}px) scale(1.04)`;
+    });
+    popup.addEventListener('mouseleave', function() {
+        const img = popup.querySelector('.image-description');
+        if (img) img.style.transform = 'translate(0,0) scale(1)';
+    });
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+    autoScrollCards('.projects-cards', 0.2);
+    enableParallaxOnPopupImage();
+});
+
+
+document.addEventListener('DOMContentLoaded', function() {
+    autoScrollCards('.projects-cards', 0.2);
+    autoScrollCards('.carrusel-track', 0.2); // <-- Agrega esta línea para wireframes
+    enableParallaxOnPopupImage();
+});
+
+
+
+document.addEventListener('DOMContentLoaded', function() {
+    // ...tu código existente...
+
+    // Envío del formulario por AJAX
+    const form = document.getElementById('contactForm');
+    if (form) {
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            const data = {
+                name: form.name.value,
+                email: form.email.value,
+                message: form.message.value
+            };
+            fetch('http://localhost:3000/api/contact', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(data)
+            })
+            .then(res => res.json())
+            .then(res => {
+                if (res.success) {
+                    form.reset();
+                    document.getElementById('form-status').textContent = 'Mensaje enviado correctamente!';
+                } else {
+                    document.getElementById('form-status').textContent = 'Error: ' + (res.error || 'No se pudo enviar.');
+                }
+            })
+            .catch(() => {
+                document.getElementById('form-status').textContent = 'Error de conexión.';
+            });
+        });
+    }
+});
+
+
+// Menú hamburguesa
+document.addEventListener('DOMContentLoaded', function() {
+    const hamburger = document.getElementById('hamburger-btn');
+    const navBar = document.querySelector('.nav-bar');
+    if (hamburger && navBar) {
+        hamburger.addEventListener('click', function() {
+            navBar.classList.toggle('active');
+        });
+        // Opcional: cerrar menú al hacer click en un link
+        navBar.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => navBar.classList.remove('active'));
+        });
+    }
+});
+
+
+
