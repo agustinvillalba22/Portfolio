@@ -170,36 +170,18 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 document.addEventListener('DOMContentLoaded', function() {
-    // ...tu código existente...
-
-    // Envío del formulario por AJAX
-    const form = document.getElementById('contactForm');
-    if (form) {
-        form.addEventListener('submit', function(e) {
-            e.preventDefault();
-            const data = {
-                name: form.name.value,
-                email: form.email.value,
-                message: form.message.value
-            };
-            fetch('http://localhost:3000/api/contact', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(data)
-            })
-            .then(res => res.json())
-            .then(res => {
-                if (res.success) {
-                    form.reset();
-                    document.getElementById('form-status').textContent = 'Mensaje enviado correctamente!';
-                } else {
-                    document.getElementById('form-status').textContent = 'Error: ' + (res.error || 'No se pudo enviar.');
-                }
-            })
-            .catch(() => {
-                document.getElementById('form-status').textContent = 'Error de conexión.';
-            });
+const form = document.getElementById('contactForm');
+if (form) {
+    form.addEventListener('submit', function(e) {
+        e.preventDefault();
+        emailjs.sendForm('TU_SERVICE_ID', 'TU_TEMPLATE_ID', this)
+        .then(function() {
+            document.getElementById('form-status').textContent = '¡Mensaje enviado!';
+            form.reset();
+        }, function(error) {
+            document.getElementById('form-status').textContent = 'Error al enviar. Intenta de nuevo.';
         });
+    });
     }
 });
 
