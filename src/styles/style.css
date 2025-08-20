@@ -66,6 +66,9 @@
     justify-content: space-between;
     padding-top: 100px;
     min-height: 100vh;
+    background-image: url('../assets/images/1000000118.jpg');
+    background-size: cover;
+    background-position: bottom;
     gap: 100px;
 }
 
