@@ -10,6 +10,9 @@ app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
+// Serve static files from root directory
+app.use(express.static(__dirname));
+
 // Base de datos SQLite
 const db = new sqlite3.Database('forms.db');
 db.serialize(() => {
